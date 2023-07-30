@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
 	let currentSlide = 0;
   
-	// Function to generate the dots dynamically
+	// Fonction pour générer les points dynamiquement
 	function createDots(numberOfDots) {
 	  for (let i = 0; i < numberOfDots; i++) {
 		const dot = document.createElement('div');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	  updateCarousel();
 	});
   
-	// Add logic to switch the selected dot
+	// Ajouter une logique pour changer le point sélectionné
 	function updateCarousel() {
 	  const selectedDot = document.querySelector('.dot_selected');
 	  if (selectedDot) {
@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	  showSlide(currentSlide);
 	}
   
-	// Call the createDots function to generate the dots dynamically
+	// Appelez la fonction createDots pour générer dynamiquement les points
 	const numberOfSlides = slides.length;
 	createDots(numberOfSlides);
   
-	// Function to display slide content based on the current slide index
+	// Fonction pour afficher le contenu de la diapositive en fonction de l'index de diapositive actuel
 	function showSlide(slideIndex) {
 	  if (slideIndex >= 0 && slideIndex < slides.length) {
 		bannerImage.src = './assets/images/slideshow/' + slides[slideIndex].image;
@@ -71,14 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	  }
 	}
   
-	// Initial display of the first slide
+	// Affichage initial de la première diapositive
 	showSlide(currentSlide);
   
-	// Now, you can add event listeners to the dots
+	// Maintenant, ajouter des event listeners aux points
 	const dots = document.querySelectorAll('.dot');
 	dots.forEach((dot, index) => {
 	  dot.addEventListener('click', () => {
-		// Show the selected slide when a dot is clicked
+		// Afficher la diapositive sélectionnée lorsqu'un point est cliqué
 		currentSlide = index;
 		updateCarousel();
 	  });
