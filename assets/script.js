@@ -19,12 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	  }
 	];
   
+
+	// Éléments HTML nécessaires pour le fonctionnement du carrousel.
 	const bannerImage = document.querySelector('.banner-img');
 	const bannerTagline = document.querySelector('#banner p');
-	const dotsContainer = document.querySelector('.dots');
 	const leftArrow = document.querySelector('.arrow_left');
 	const rightArrow = document.querySelector('.arrow_right');
+	const dotsContainer = document.querySelector('.dots');
   
+	// Déclaration de variable - valeur initiale de 0 (diapositive actuellement affichée).
 	let currentSlide = 0;
   
 	// Fonction pour générer les points dynamiquement
@@ -36,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	  }
 	}
   
+	// EventListeners pour les fleches
 	leftArrow.addEventListener('click', () => {
 	  console.log('Left arrow clicked!');
 	  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
@@ -54,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	  if (selectedDot) {
 		selectedDot.classList.remove('dot_selected');
 	  }
+
+	  //Cette ligne récupère tous les éléments HTML des points (dots) du carrousel.
 	  const dots = document.querySelectorAll('.dot');
 	  dots[currentSlide].classList.add('dot_selected');
 	  showSlide(currentSlide);

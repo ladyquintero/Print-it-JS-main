@@ -120,7 +120,7 @@ header {
 	z-index: -1;
 	object-fit: cover;
 	object-position: center;
-	transition: opacity 0.5s ease; /* Durée et la fonction d'accélération */
+	transition: opacity 0.8s ease; /* Durée et la fonction d'accélération */
 }
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
@@ -164,7 +164,7 @@ header {
 	color: white;
 	text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 	text-align: center;
-	transition: opacity 0.5s ease; /* Durée et la fonction d'accélération  */
+	transition: opacity 0.8s ease; /* Durée et la fonction d'accélération  */
 }
 #banner span {
 	display: block;
