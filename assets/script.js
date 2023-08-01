@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
 	const slides = [
 	  {
 		"image": "slide1.jpg",
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	  }
 	];
   
-
 	// Éléments HTML nécessaires pour le fonctionnement du carrousel.
 	const bannerImage = document.querySelector('.banner-img');
 	const bannerTagline = document.querySelector('#banner p');
@@ -37,7 +35,36 @@ document.addEventListener('DOMContentLoaded', () => {
 		dot.classList.add('dot');
 		dotsContainer.appendChild(dot);
 	  }
+  
+	  // Select the first dot and add the "dot_selected" class to it
+	  const dots = document.querySelectorAll('.dot');
+	  dots[currentSlide].classList.add('dot_selected');
 	}
+  
+	// Ajouter une logique pour changer le point sélectionné
+	function updateCarousel() {
+	  const selectedDot = document.querySelector('.dot_selected');
+	  if (selectedDot) {
+		selectedDot.classList.remove('dot_selected');
+	  }
+  
+	  //Cette ligne récupère tous les éléments HTML des points (dots) du carrousel.
+	  const dots = document.querySelectorAll('.dot');
+	  dots[currentSlide].classList.add('dot_selected');
+	  showSlide(currentSlide);
+	}
+  
+	// Fonction pour afficher le contenu de la diapositive en fonction de l'index de diapositive actuel
+	function showSlide(slideIndex) {
+	  if (slideIndex >= 0 && slideIndex < slides.length) {
+		bannerImage.src = './assets/images/slideshow/' + slides[slideIndex].image;
+		bannerTagline.innerHTML = slides[slideIndex].tagLine;
+	  }
+	}
+  
+	// Call the createDots function to generate the dots dynamically
+	const numberOfSlides = slides.length;
+	createDots(numberOfSlides);
   
 	// EventListeners pour les fleches
 	leftArrow.addEventListener('click', () => {
@@ -51,31 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	  currentSlide = (currentSlide + 1) % slides.length;
 	  updateCarousel();
 	});
-  
-	// Ajouter une logique pour changer le point sélectionné
-	function updateCarousel() {
-	  const selectedDot = document.querySelector('.dot_selected');
-	  if (selectedDot) {
-		selectedDot.classList.remove('dot_selected');
-	  }
-
-	  //Cette ligne récupère tous les éléments HTML des points (dots) du carrousel.
-	  const dots = document.querySelectorAll('.dot');
-	  dots[currentSlide].classList.add('dot_selected');
-	  showSlide(currentSlide);
-	}
-  
-	// Appelez la fonction createDots pour générer dynamiquement les points
-	const numberOfSlides = slides.length;
-	createDots(numberOfSlides);
-  
-	// Fonction pour afficher le contenu de la diapositive en fonction de l'index de diapositive actuel
-	function showSlide(slideIndex) {
-	  if (slideIndex >= 0 && slideIndex < slides.length) {
-		bannerImage.src = './assets/images/slideshow/' + slides[slideIndex].image;
-		bannerTagline.innerHTML = slides[slideIndex].tagLine;
-	  }
-	}
   
 	// Affichage initial de la première diapositive
 	showSlide(currentSlide);
