@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		dotsContainer.appendChild(dot);
 	  }
   
-	  // Select the first dot and add the "dot_selected" class to it
+	  // Sélection premier point et ajoutez-y la classe "dot_selected"
 	  const dots = document.querySelectorAll('.dot');
 	  dots[currentSlide].classList.add('dot_selected');
 	}
@@ -78,8 +78,31 @@ document.addEventListener('DOMContentLoaded', () => {
 	  currentSlide = (currentSlide + 1) % slides.length;
 	  updateCarousel();
 	});
-  
-	// Affichage initial de la première diapositive
+
+
+   // **** Fonction pour faire avancer le carrousel automatiquement
+    function autoAdvance() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+  }
+
+  // Définir l'intervalle de temps pour le diaporama automatique (par exemple, toutes les 5 secondes)
+  const intervalTime = 5000; // 5000 millisecondes (5 secondes)
+  let slideshowInterval = setInterval(autoAdvance, intervalTime);
+
+  // Mettre en pause le diaporama automatique lors du survol du carrousel
+  bannerImage.addEventListener('mouseover', () => {
+    clearInterval(slideshowInterval);
+  });
+
+  // Reprendre le diaporama automatique lorsque vous ne survolez pas le carrousel
+  bannerImage.addEventListener('mouseout', () => {
+    slideshowInterval = setInterval(autoAdvance, intervalTime);
+  });
+
+
+	
+  // Affichage initial de la première diapositive
 	showSlide(currentSlide);
   
 	// Maintenant, ajouter des event listeners aux points
